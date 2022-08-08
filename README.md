@@ -1,1 +1,2 @@
 # Discord-snowflake-deconstructor-py
+Its a discord snowflake deconstructor written in python. Although it's not that good, the barebone code for deconstructing snowflakes is fairly optimized dare I say. I'd appreciate any contribution done to this so that it'll be even better. Also am i imagining things or is this the only discord snowflake deconstructor in python. Either way hope you have fun with this little code.
