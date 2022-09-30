@@ -12,8 +12,8 @@ def validate_snowflake():
       snowflake = int(input("Snowflake: "))
       if snowflake < 4194304:
         print("Error! Snowflakes are large numbers")
-        continue 
-      print(convert_snowflake(snowflake))
+      else:
+        print(convert_snowflake(snowflake))
     except OverflowError:
       print("Error! Snowflakes are lower numbers")
     except ValueError:
