@@ -7,7 +7,7 @@ def main():
     if len(sys.argv) == 2:
       snowflake = sys.argv[1]
     else:
-      snowflake = input("Sowflake: ")
+      snowflake = input("Snowflake: ")
     # Convert snowflake and print result
     date_string = validate_snowflake(snowflake)
     if isinstance(date_string, str):
