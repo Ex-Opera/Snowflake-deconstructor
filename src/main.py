@@ -1,4 +1,5 @@
 import sys
+
 from snowflake_converter import validate_snowflake
 
 def main():
