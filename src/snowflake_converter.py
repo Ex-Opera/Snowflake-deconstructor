@@ -31,7 +31,7 @@ def validate_snowflake() -> str:
       elif snowflake < DISCORD_EPOCH * 1000:
         print(f"Error! Snowflakes are greater than or equal to {DISCORD_EPOCH}")
       else:
-        print(convert_snowflake(snowflake))
+        return convert_snowflake(snowflake)
         break
     except ValueError:
       print("Error! Snowflakes only contain numbers")
