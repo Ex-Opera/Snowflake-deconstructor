@@ -25,14 +25,15 @@ def validate_snowflake() -> str:
       # Snowflake to validate
       snowflake = int(input("Snowflake: "))
       # Check if snowflake is a valid 64-bit integer
-      if snowflake < 4194304:
-        print("Error! Snowflakes are large numbers")
+      if not (0 <= snowflake < 2**64):
+        print("Error! Snowflakes are 64-bit integers")
+      # Check if snowflake is greater than or equal to the Discord epoch
+      elif snowflake < DISCORD_EPOCH * 1000:
+        print(f"Error! Snowflakes are greater than or equal to {DISCORD_EPOCH}")
       else:
         print(convert_snowflake(snowflake))
         break
-    except OverflowError:
-      print("Error! Snowflakes are lower numbers")
     except ValueError:
-      print("Snowflakes only contain numbers")
+      print("Error! Snowflakes only contain numbers")
 
 validate_snowflake()
