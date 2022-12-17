@@ -1,2 +1,2 @@
-# Discord-snowflake-deconstructor
-It's a discord snowflake deconstructor written in python. It converts discord Snowflake ID to ISO1806 UTC timeformat.
+# Discord Snowflake to ISO Converter
+This script provides a function to convert Discord snowflakes (64-bit inteers) to ISO format date strings in the UTC time zone.
