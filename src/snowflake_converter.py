@@ -13,27 +13,21 @@ def convert_snowflake(snowflake: int) -> str:
   # Calculate number of milliseconds since Discord epoch
   milliseconds = int(snowflake >> 22)
   # Add milliseconds to Discord epoch and return ISO format date string in UTC
-  return (datetime.utcfromtimestamp(DISCORD_EPOCH) + timedelta(milliseconds=milliseconds)).isoformat() + 'Z'
+  return (datetime.fromtimestamp(DISCORD_EPOCH) + timedelta(milliseconds=milliseconds)).isoformat() + 'Z'
 
-def validate_snowflake() -> str:
+def validate_snowflake(snowflake: str) -> str:
   """Validate snowflake and convert to ISO format date string.
+  Args:
+      snowflake (str): Snowflake to validate and convert.
   Returns:
       str: ISO format date string in UTC.
   """
-  while True:
-    try:
-      # Snowflake to validate
-      snowflake = int(input("Snowflake: "))
-      # Check if snowflake is a valid 64-bit integer
-      if not (0 <= snowflake < 2**64):
-        print("Error! Snowflakes are 64-bit integers")
-      # Check if snowflake is greater than or equal to the Discord epoch
-      elif snowflake < DISCORD_EPOCH * 1000:
-        print(f"Error! Snowflakes are greater than or equal to {DISCORD_EPOCH}")
-      else:
-        return convert_snowflake(snowflake)
-        break
-    except ValueError:
-      print("Error! Snowflakes only contain numbers")
-
-validate_snowflake()
+  # Check if input is a valid snowflake
+  if not snowflake.isdigit():
+    return "Error! Snowflakes only contain numbers"
+  elif not (0 <= int(snowflake) < 2**64):
+    return "Error! Snowflakes are 64-bit integers"
+  elif int(snowflake) < DISCORD_EPOCH * 1000:
+    return f"Error! Snowflakes are greater than or equal to {DISCORD_EPOCH}"
+  else:
+    return convert_snowflake(int(snowflake))
